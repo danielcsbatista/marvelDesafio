@@ -1,4 +1,5 @@
-# marvelDesafio
+# Desafio Marvel
+
 App sobre o mundo Marvel
 
 ## Instalação
@@ -6,8 +7,9 @@ App sobre o mundo Marvel
 Use o gerenciador de pacotes do node para instalar o app dentro da pasta do projeto marvelDesafio.
 
 ```bash
-npm install 
+npm install
 ```
+
 ## Executando o aplicativo Marvel (React Native)
 
 Após a instalação dos pacotes acima, execute react-native run-android dentro da pasta do projeto marvelDesafio.

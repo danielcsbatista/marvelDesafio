@@ -1,18 +1,30 @@
 import styled from 'styled-components/native';
 
-const Container = styled.View`
+const Container = styled.View `
       flex: 1;
       flex-direction: column;
-`;  
+`;
 
-const ScrollItens = styled.ScrollView`
+const ScrollItens = styled.ScrollView `
     flex:11;
+    background-color:#ff0;
 `;
 
-const FooterMenu = styled.View`
-
-    flex:1;
-    flex-direction: column;
+const Footer = styled.View `
+     flex-direction: row;     
+     background-color: #FAFAEB; 
+     justify-content: space-between;  
+     align-content: center;   
 `;
 
-export {Container, ScrollItens, FooterMenu}
+const CategoryListTitle = styled.View `
+     flex: 1;
+     background-color:#000;
+`;
+
+const TitleCategory = styled.Text `
+    font-size:24;
+    color: #eee;
+`;
+
+export {Container, ScrollItens, Footer, CategoryListTitle, TitleCategory}
