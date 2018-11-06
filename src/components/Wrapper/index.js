@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
 import {StatusBar} from 'react-native';
-import {WrapperApp, TopMarvel, ContentBody} from './Styles';
+import {WrapperApp, TopMarvel, ContentBody, Image, BackImage} from './Styles';
 
 export default class Wrapper extends Component {
-
     render()
     {
         return (
             <WrapperApp>
-                <StatusBar hidden/>
-                <TopMarvel></TopMarvel>
+                <TopMarvel>
+                    <BackImage source={require('../../shared/images/back-top.png')}>
+                        <Image
+                            source={require('../../shared/images/logo-marvel.png')}
+                            ImageResizeMode="contain"/>
+                    </BackImage>
+                </TopMarvel>
                 <ContentBody>
                     {this.props.children}
                 </ContentBody>

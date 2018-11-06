@@ -1,3 +1,3 @@
-export function getCategory(nameRefer) {
-    return {type: 'GET_CATEGORY', name: nameRefer}
+export function getCategory(params) {
+    return {type: 'GET_CATEGORY', payload: params}
 }

@@ -5,7 +5,6 @@ import ListInitial from '../../components/ListInitial';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../config/actions/category';
 import {connect} from 'react-redux';
-import {View, Text} from 'react-native';
 
 class Home extends Component {
   constructor(props)
@@ -15,27 +14,27 @@ class Home extends Component {
       initialMenu: [
         {
           title: 'CHARACTERS',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/characters.png'),
           urlRefer: 'characters'
         }, {
           title: 'COMICS',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/comics.png'),
           urlRefer: 'comics'
         }, {
           title: 'CREATORS',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/creators.png'),
           urlRefer: 'creators'
         }, {
           title: 'EVENTS',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/events.png'),
           urlRefer: 'events'
         }, {
           title: 'SERIES',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/series.png'),
           urlRefer: 'series'
         }, {
           title: 'STORIES',
-          imgSrc: 'https://facebook.github.io/react/logo-og.png',
+          imgSrc: require('../../shared/images/stories.png'),
           urlRefer: 'stories'
         }
       ]
@@ -47,11 +46,11 @@ class Home extends Component {
     header: null
   };
 
-  _onPress(urlRefer)
+  _onPress(content)
   {
     this
       .props
-      .getCategory(urlRefer);
+      .getCategory(content);
     this
       .props
       .navigation
@@ -62,15 +61,6 @@ class Home extends Component {
   {
     return (
       <Wrapper>
-        <View>
-          {this
-            .props
-            .category
-            .map((item, i) => {
-              return <Text key={(Math.random() * 100) + 20}>{item.nameCategory}</Text>
-            })
-}
-        </View>
         <Container>
           {this
             .state
@@ -80,7 +70,7 @@ class Home extends Component {
                 imgSrc={itens.imgSrc}
                 title={itens.title}
                 key={i}
-                callFunction={() => this._onPress(itens.urlRefer)}/>
+                callFunction={() => this._onPress({urlRefer: itens.urlRefer, nameCategory: itens.title})}/>
             })
 }
         </Container>

@@ -1,11 +1,12 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
-import {TouchableMenu} from './Styles';
+import {TouchableMenu, TitleIcon} from './Styles';
 
 const FooterMenu = (props) => (
 
-  <TouchableMenu>
-    <Icon name={props.nameIcon} size={32} color="#666"/>
+  <TouchableMenu onPress={() => props.callFuntion()}>
+    <Icon name={props.nameIcon} size={32} color="#B21009"/>
+    <TitleIcon>{props.title}</TitleIcon>
   </TouchableMenu>
 
 );

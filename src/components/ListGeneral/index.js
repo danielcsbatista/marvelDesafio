@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
-import {RowItem, ImageItem, DescriptionItem} from './Styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+    RowItem,
+    ImageItem,
+    DescriptionItem,
+    TitleItem,
+    SubTitleItem,
+    FavoriteItem
+} from './Styles';
 
-export default class ListGeneral extends Component
-{
-    constructor(props)
-    {
-        super(props);
-    }
-
-    _onPressNavigator()
-    {
-        console.log('ok');
-    }
-
-    render()
-    {
-        return (
-            <RowItem>
-                <ImageItem
-                    source={{
-                    uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'
-                }}/>
-                <DescriptionItem>
-                    <Text>teste</Text>
-                </DescriptionItem>
-            </RowItem>
-        )
-    }
-}
+const ListGeneral = (props) => (
+    <RowItem>
+        <ImageItem
+            source={{
+            uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'
+        }}/>
+        <DescriptionItem>
+            <TitleItem>{props.title}</TitleItem>
+            <SubTitleItem>{props.subTitle}</SubTitleItem>
+        </DescriptionItem>
+        <FavoriteItem>
+            <Icon name="star" size={32} color="#bbb"/>
+        </FavoriteItem>
+    </RowItem>
+);
+export default ListGeneral
