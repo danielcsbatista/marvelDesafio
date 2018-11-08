@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     RowItem,
+    ButtomItem,
     ImageItem,
     DescriptionItem,
     TitleItem,
@@ -11,17 +12,22 @@ import {
 
 const ListGeneral = (props) => (
     <RowItem>
-        <ImageItem
-            source={{
-            uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'
-        }}/>
+    <ButtomItem onPress={() => props.callFuntion()}>
+        {(props.imgSrc !== null && props.imgSrc !== '' && props.imgSrc !== undefined)
+            ? <ImageItem source={{
+                    uri: props.imgSrc
+                }}/>
+            : null}
         <DescriptionItem>
             <TitleItem>{props.title}</TitleItem>
-            <SubTitleItem>{props.subTitle}</SubTitleItem>
-        </DescriptionItem>
-        <FavoriteItem>
+            {(props.subTitle !== null)
+                ? <SubTitleItem>{props.subTitle}</SubTitleItem>
+                : null}
+        </DescriptionItem>       
+    </ButtomItem>
+     <FavoriteItem>
             <Icon name="star" size={32} color="#bbb"/>
-        </FavoriteItem>
-    </RowItem>
+     </FavoriteItem>
+</RowItem>
 );
 export default ListGeneral

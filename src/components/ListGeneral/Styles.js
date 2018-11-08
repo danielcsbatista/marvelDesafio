@@ -8,11 +8,18 @@ const RowItem = styled.View `
         margin-top:3;
 `;
 
+const ButtomItem = styled.TouchableOpacity `
+        flex: 10;
+        flex-direction: row;            
+        padding-right:2;
+        margin-top:3;
+`; 
+
 const ImageItem = styled.Image `
         flex: 2;
         width: 50;
         height: 50;
-        margin-right: 5;
+        margin-right: 8;
         margin-left:5;
         border-radius: 3; 
 `;
@@ -29,6 +36,7 @@ const TitleItem = styled.Text `
 const SubTitleItem = styled.Text `
          color: #666;
         font-size: 14;   
+        text-align: justify;
 `;
 
 const FavoriteItem = styled.View `
@@ -37,10 +45,11 @@ const FavoriteItem = styled.View `
         height: 60;
         margin-left: 5;
         padding-top: 15;
-        margin-right: 8;
+        margin-right: 10;
 `;
 export {
         RowItem,
+        ButtomItem,
         ImageItem,
         DescriptionItem,
         TitleItem,

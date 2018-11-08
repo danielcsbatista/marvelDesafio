@@ -22,11 +22,11 @@ class ModalList extends Component
                 visible={this.state.display}
                 animationType="fade"
                 transparent={true}
-                onRequestClose={() => console.log('closed')}>
+                onRequestClose={() => {}}>
                 <ModalContainer>
                     <BoxModal>
                         <TitleModal>
-                            teste 3 - {this.state.display}
+                            teste 3
                         </TitleModal>
                         <Button
                             onPress={() => {

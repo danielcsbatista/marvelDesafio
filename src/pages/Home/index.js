@@ -1,44 +1,16 @@
 import React, {Component} from 'react';
 import {Container} from './Styles';
-import Wrapper from '../../components/Wrapper';
-import ListInitial from '../../components/ListInitial';
+import {Wrapper, ListInitial} from '../../components';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../config/actions/category';
 import {connect} from 'react-redux';
+import {category} from '../../config/data/category';
 
 class Home extends Component {
   constructor(props)
   {
     super(props);
-    this.state = {
-      initialMenu: [
-        {
-          title: 'CHARACTERS',
-          imgSrc: require('../../shared/images/characters.png'),
-          urlRefer: 'characters'
-        }, {
-          title: 'COMICS',
-          imgSrc: require('../../shared/images/comics.png'),
-          urlRefer: 'comics'
-        }, {
-          title: 'CREATORS',
-          imgSrc: require('../../shared/images/creators.png'),
-          urlRefer: 'creators'
-        }, {
-          title: 'EVENTS',
-          imgSrc: require('../../shared/images/events.png'),
-          urlRefer: 'events'
-        }, {
-          title: 'SERIES',
-          imgSrc: require('../../shared/images/series.png'),
-          urlRefer: 'series'
-        }, {
-          title: 'STORIES',
-          imgSrc: require('../../shared/images/stories.png'),
-          urlRefer: 'stories'
-        }
-      ]
-    }
+    this.state = {}
 
   }
 
@@ -62,9 +34,8 @@ class Home extends Component {
     return (
       <Wrapper>
         <Container>
-          {this
-            .state
-            .initialMenu
+          {category
+            .data
             .map((itens, i) => {
               return <ListInitial
                 imgSrc={itens.imgSrc}

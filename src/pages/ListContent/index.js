@@ -1,13 +1,27 @@
 import React, {Component} from 'react';
-import {Alert, Text, View} from 'react-native';
-import Wrapper from '../../components/Wrapper'
-import {Container, ScrollItens, Footer, CategoryListTitle, TitleCategory} from './Styles';
-import ListGeneral from '../../components/ListGeneral'
+import {Alert} from 'react-native';
+import {
+  Wrapper,
+  FooterMenu,
+  ModalList,
+  ListGeneral,
+  Loader,
+  Error,
+  SearchContent
+} from '../../components';
+import {
+  Container,
+  ScrollItens,
+  Footer,
+  CategoryListTitle,
+  TitleCategory,
+  Row
+} from './Styles';
 import Api from '../../services/api';
 import {connect} from 'react-redux';
-import FooterMenu from '../../components/FooterMenu';
-import ModalList from '../../components/ModalList';
-import securityKey from '../../services/securityKey'
+import securityKey from '../../services/securityKey';
+import {menuFooter} from '../../config/data/menuFooter';
+import {doTruncarStr} from '../../utlis/doTruncarStr';
 
 class ListContent extends Component
 {
@@ -15,85 +29,58 @@ class ListContent extends Component
   {
     super(props);
     this.state = {
-      itens: [
-        {
-          id: 1,
-          title: 'Titulo item 1',
-          subTitle: 'Descrição item',
-          thumbnail: ''
-        }, {
-          id: 2,
-          title: 'Titulo item 2',
-          subTitle: 'Descrição item',
-          thumbnail: ''
-        }, {
-          id: 3,
-          title: 'Titulo item 3',
-          subTitle: 'Descrição item',
-          thumbnail: ''
-        }
-      ],
-      menuFooter: [
-        {
-          icon: 'home',
-          title: 'Home',
-          type: 'HOME_VIEW'
-        }, {
-          icon: 'search',
-          title: 'Search',
-          type: 'SEARCH_MODAL'
-        }, {
-          icon: 'filter',
-          title: 'Filter',
-          type: 'FILTER_MODAL'
-        }, {
-          icon: 'star',
-          title: 'Favorite',
-          type: 'STAR_MODAL'
-        }
-      ],
-      display: false
-    };
-    console.log(securityKey.urlKey());
-  }
+      itens: [],
+      display: false,
+      error: false,
+      loading: true,
+      codeError: '',
+      showSearch: false
+    }
+  };
 
   static navigationOptions = {
     header: null
   };
 
-  async apiSubmit(urlRefer)
-  {
-    const response = await Api.get(`${urlRefer}?${securityKey.urlKey()}`)
-    return response;
-  }
-
   componentDidMount()
   {
-
-    /*Api.get(`characters?${securityKey.urlKey()}`).then(res => {
-      console.log(res);
-      console.log(res.data);
-    })*/
+    this.apiSubmit(this.props.category.urlRefer);
   }
 
   render()
   {
-    console.log(apiSubmit('characters'));
-    //console.log(this.state.display);
+    if (this.state.error) 
+      return (
+        <Wrapper>
+          <Container>
+            <Error codeError={this.state.codeError}/>
+          </Container>
+        </Wrapper>
+      );
+    
+    if (this.state.loading) 
+      return (
+        <Wrapper>
+          <Container>
+            <Loader/>
+          </Container>
+        </Wrapper>
+      );
+    
     return (
       <Wrapper>
         <Container>
           <CategoryListTitle>
-            {this
-              .props
-              .category
-              .map((item, f) => {
-                return <TitleCategory key={f}>
-                  {item.nameCategory}
-                </TitleCategory>
-              })
-}
+            <TitleCategory>
+              {this.props.category.nameCategory}
+            </TitleCategory>
           </CategoryListTitle>
+          {(this.state.showSearch)
+            ? <Row><SearchContent
+                parameter={`${this.props.category.urlRefer}&title`}
+                callFuntion={() => this.apiSubmit()}/></Row>
+            : null
+}
 
           <ScrollItens
             data={this.state.itens}
@@ -105,18 +92,18 @@ class ListContent extends Component
             return (<ListGeneral
               title={item.title}
               subTitle={item.subTitle}
-              imgSrc={item.thumbnail}/>)
+              callFuntion={() => this._onPressItemListGeneral(item)}
+              imgSrc={item.imgSrc}/>)
           }}/>
           <Footer>
-            {this
-              .state
-              .menuFooter
+            {menuFooter
+              .data
               .map((item, i) => {
                 return <FooterMenu
                   key={i}
                   nameIcon={item.icon}
                   title={item.title}
-                  callFuntion={() => this._onPress(item)}/>
+                  callFuntion={() => this._onPressMenuFooter(item)}/>
               })
 }
           </Footer>
@@ -126,7 +113,7 @@ class ListContent extends Component
     );
   }
 
-  _onPress(params)
+  _onPressMenuFooter(params)
   {
     switch (params.type) {
       case 'HOME_VIEW':
@@ -135,31 +122,103 @@ class ListContent extends Component
           .navigation
           .navigate('Home');
       case 'FILTER_MODAL':
-
         this
           .refs
           .ModalList
           .setModalVisible(true);
-
         break;
       case 'STAR_MODAL':
         this
           .refs
           .ModalList
           .setModalVisible(true);
-
         break
       case 'SEARCH_MODAL':
-        this
-          .refs
-          .ModalList
-          .setModalVisible(true);
+        this.setState({showSearch: true});
         break;
       default:
-        return Alert.alert('Verifique o objeto "menuFooter" no state ');
+        return Alert.alert('Verifique o objeto "menuFooter" importado ');
     }
   }
 
+  _onPressItemListGeneral(params)
+  {
+    this
+      .props
+      .navigation
+      .navigate('Details');
+  }
+
+  async apiSubmit(urlRefer)
+  {
+    console.log(urlRefer);
+
+    try {
+
+      const response = await Api.get(`${urlRefer}?${securityKey.urlKey()}`)
+      let res = response.data.data.results;
+
+      let itens = [];
+      switch (this.props.category.urlRefer) {
+        case 'comics':
+        case 'events':
+        case 'series':
+          itens = res.map((item) => {
+            return {
+              id: item.id,
+              title: doTruncarStr(item.title, 25),
+              subTitle: (item.description !== null)
+                ? doTruncarStr(item.description, 50)
+                : 'Not released',
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+            }
+          });
+
+          break;
+        case 'story':
+          itens = res.map((item) => {
+            return {id: item.id, title: item.title}
+          });
+          break;
+        case 'characters':
+          itens = res.map((item) => {
+            return {
+              id: item.id,
+              title: item.name,
+              subTitle: doTruncarStr(item.description, 70),
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+            }
+          });
+          break;
+        case 'creators':
+          itens = res.map((item) => {
+            return {
+              id: item.id,
+              title: item.fullName || 'Not Released',
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+            }
+          });
+          break;
+
+        default:
+          break;
+      }
+
+      console.log(response.data.results);
+
+      this.setState({itens, loading: false});
+
+    } catch (error) {
+
+      this.setState({
+        loading: false,
+        error: true,
+        codeError: (error.response !== undefined)
+          ? error.response.status
+          : 0
+      });
+    }
+  }
 }
 
 const mapsStateToProps = state => ({category: state.category});

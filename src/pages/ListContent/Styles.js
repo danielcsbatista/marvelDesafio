@@ -6,7 +6,7 @@ const Container = styled.View `
 `;
 
 const ScrollItens = styled.FlatList `
-    flex:11;
+    flex:10;
     background-color:#f4f4ea; 
 `;
 
@@ -31,5 +31,15 @@ const TitleCategory = styled.Text `
     font-size:24;
     color: #eee;
 `;
+const Row = styled.View `
+     flex: 1.2;     
+`;
 
-export {Container, ScrollItens, Footer, CategoryListTitle, TitleCategory}
+export {
+    Container,
+    ScrollItens,
+    Footer,
+    CategoryListTitle,
+    TitleCategory,
+    Row
+}
