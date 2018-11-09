@@ -34,7 +34,9 @@ class ListContent extends Component
       error: false,
       loading: true,
       codeError: '',
-      showSearch: false
+      showSearch: false,
+      paramSearch: '',
+      paramOrder: ''
     }
   };
 
@@ -44,7 +46,12 @@ class ListContent extends Component
 
   componentDidMount()
   {
-    this.apiSubmit(this.props.category.urlRefer);
+    let initialCallApi = `${this
+      .props
+      .category
+      .urlRefer}?${securityKey
+      .urlKey()}`;
+    this.apiSubmit(initialCallApi);
   }
 
   render()
@@ -77,8 +84,8 @@ class ListContent extends Component
           </CategoryListTitle>
           {(this.state.showSearch)
             ? <Row><SearchContent
-                parameter={`${this.props.category.urlRefer}&title`}
-                callFuntion={() => this.apiSubmit()}/></Row>
+                parameter={`${this.props.category.paramSearch}`}
+                callFunction={this._onPressSearch}/></Row>
             : null
 }
 
@@ -92,7 +99,7 @@ class ListContent extends Component
             return (<ListGeneral
               title={item.title}
               subTitle={item.subTitle}
-              callFuntion={() => this._onPressItemListGeneral(item)}
+              callFunction={() => this._onPressItemListGeneral(item)}
               imgSrc={item.imgSrc}/>)
           }}/>
           <Footer>
@@ -103,12 +110,16 @@ class ListContent extends Component
                   key={i}
                   nameIcon={item.icon}
                   title={item.title}
-                  callFuntion={() => this._onPressMenuFooter(item)}/>
+                  callFunction={() => this._onPressMenuFooter(item)}/>
               })
 }
           </Footer>
         </Container>
-        <ModalList ref="ModalList" display={this.state.display}/>
+        <ModalList
+          ref="ModalList"
+          display={this.state.display}
+          itemsOrder={this.props.category.orderBy}
+          callFunction={this._onPressFilter}/>
       </Wrapper>
     );
   }
@@ -133,7 +144,7 @@ class ListContent extends Component
           .ModalList
           .setModalVisible(true);
         break
-      case 'SEARCH_MODAL':
+      case 'SEARCH_INPUT':
         this.setState({showSearch: true});
         break;
       default:
@@ -141,8 +152,19 @@ class ListContent extends Component
     }
   }
 
-  _onPressItemListGeneral(params)
-  {
+  _onPressSearch = (params) => {
+    this.setState({paramSearch: params});
+    this.apiSubmit(`${this.props.category.urlRefer}?${params}&${securityKey.urlKey()}`);
+  }
+
+  _onPressFilter = (params) => {
+
+    console.log(params);
+    this.setState({paramOrder: params});
+    this.apiSubmit(`${this.props.category.urlRefer}?orderBy=${params}&${securityKey.urlKey()}`);
+  }
+
+  _onPressItemListGeneral = (params) => {
     this
       .props
       .navigation
@@ -155,7 +177,8 @@ class ListContent extends Component
 
     try {
 
-      const response = await Api.get(`${urlRefer}?${securityKey.urlKey()}`)
+      this.setState({loading: true, showSearch: false});
+      const response = await Api.get(urlRefer)
       let res = response.data.data.results;
 
       let itens = [];
@@ -203,8 +226,6 @@ class ListContent extends Component
         default:
           break;
       }
-
-      console.log(response.data.results);
 
       this.setState({itens, loading: false});
 

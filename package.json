@@ -5,9 +5,14 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "flow": "flow",
+    "flowstop": "flow stop",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "16.6.0-alpha.8af6728",
@@ -20,14 +25,17 @@
     "styled-components": "^3.3.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
     "babel-jest": "23.6.0",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
+    "flow-bin": "^0.33.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
     "prettier": "^1.14.3",

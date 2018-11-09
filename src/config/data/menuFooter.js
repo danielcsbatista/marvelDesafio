@@ -7,7 +7,7 @@ const menuFooter = {
         }, {
             icon: 'search',
             title: 'Search',
-            type: 'SEARCH_MODAL'
+            type: 'SEARCH_INPUT'
         }, {
             icon: 'filter',
             title: 'Filter',

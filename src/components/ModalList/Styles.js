@@ -15,19 +15,58 @@ const Modal = styled.Modal `
 
 const TitleModal = styled.Text `
         font-size:24;
-        color:#666; 
+        color:#fff; 
+        text-align: center;
+        margin-top:10;
+        margin-bottom:12;        
+        margin-left:10;
+        margin-right:10;
+        border-radius:3;
+        background-color:#333;
+        padding-bottom:3;
 `;
 
-const BoxModal = styled.View `
-      
-        background-color:#fff; 
+const ContainerList = styled.View `        
+        padding-left:10;
+        padding-right:10;
+        padding-bottom:12;
+`;
+
+const ButtonFilter = styled.TouchableOpacity `
+        background-color:#B21009;       
+        border-radius:5;        
+        margin-bottom:3;
+`;
+
+const TitleButton = styled.Text `
+        color: #fff;
+        font-size:16;
+        text-align: center;
+        padding-left: 5;
+        padding-right: 5;
+        padding-top: 5;
+        padding-bottom: 5;
+`;
+
+const BoxModal = styled.View `      
+        background-color:#f4f4ea; 
         flex: 0.9;
         border-radius:5;
-        `;
+`;
 
-const Button = styled.Button `      
-        background-color:#841584;       
-        border-radius:5;
-        `;
+const ButtonClose = styled.TouchableOpacity `      
+       background-color:#1683E0;  
+       border-bottom-left-radius:5;
+       border-bottom-right-radius:5;   
+`;
 
-export {ModalContainer, TitleModal, Modal, BoxModal, Button}
+export {
+        ModalContainer,
+        TitleModal,
+        Modal,
+        BoxModal,
+        ButtonClose,
+        ContainerList,
+        ButtonFilter,
+        TitleButton
+}

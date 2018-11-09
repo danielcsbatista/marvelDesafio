@@ -4,7 +4,7 @@ import {TouchableMenu, TitleIcon} from './Styles';
 
 const FooterMenu = (props) => (
 
-  <TouchableMenu onPress={() => props.callFuntion()}>
+  <TouchableMenu onPress={() => props.callFunction()}>
     <Icon name={props.nameIcon} size={32} color="#B21009"/>
     <TitleIcon>{props.title}</TitleIcon>
   </TouchableMenu>

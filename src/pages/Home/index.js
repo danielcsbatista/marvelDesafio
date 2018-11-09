@@ -41,7 +41,7 @@ class Home extends Component {
                 imgSrc={itens.imgSrc}
                 title={itens.title}
                 key={i}
-                callFunction={() => this._onPress({urlRefer: itens.urlRefer, nameCategory: itens.title})}/>
+                callFunction={() => this._onPress({urlRefer: itens.urlRefer, nameCategory: itens.title, paramSearch: itens.paramSearch, orderBy: itens.orderBy})}/>
             })
 }
         </Container>

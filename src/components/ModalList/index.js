@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
-import {ModalContainer, TitleModal, Modal, BoxModal, Button} from './Styles';
+import {
+    ModalContainer,
+    TitleModal,
+    Modal,
+    BoxModal,
+    ButtonClose,
+    ContainerList,
+    ButtonFilter,
+    TitleButton
+} from './Styles';
 
 class ModalList extends Component
 {
@@ -28,11 +37,25 @@ class ModalList extends Component
                         <TitleModal>
                             teste 3
                         </TitleModal>
-                        <Button
+                        <ContainerList>
+
+                            {this
+                                .props
+                                .itemsOrder
+                                .map((item, index) => {
+                                    return <ButtonFilter key={index} onPress={() => this.props.callFunction(item.value)}>
+                                        <TitleButton>{item.name}</TitleButton>
+                                    </ButtonFilter>
+                                })}
+
+                        </ContainerList>
+                        <ButtonClose
                             onPress={() => {
                             this.setModalVisible(false);
-                        }}
-                            title="Close"/>
+                        }}>
+                            <TitleButton>Close</TitleButton>
+                        </ButtonClose>
+
                     </BoxModal>
                 </ModalContainer>
             </Modal>
