@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Container, LargeImage, BoxTitle, Title} from './Styles';
+import {
+    Container,
+    LargeImage,
+    BoxTitle,
+    Title,
+    FooterDetails,
+    ButtonFooter,
+    TitleButtonFooter
+} from './Styles';
 import {Wrapper, ListDetails, Loader, Error} from '../../components';
 import {bindActionCreators} from 'redux';
 import * as categoryActions from '../../config/actions/category';
@@ -7,14 +15,9 @@ import * as favoritesActions from '../../config/actions/favorites';
 import {connect} from 'react-redux';
 import Api from '../../services/api';
 import securityKey from '../../services/securityKey';
-import {
-    charactersDetails,
-    comicsDetails,
-    creatorsDetails,
-    eventsDetails,
-    seriesDetails,
-    storiesDetails
-} from '../../config/data/details';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import {charactersDetails, comicsDetails, creatorsDetails, eventsDetails, seriesDetails} from '../../config/data/details';
 
 class Details extends Component {
     constructor(props)
@@ -52,7 +55,7 @@ class Details extends Component {
 
     render()
     {
-        const {itens, error, loading, codeError, externalUrl} = this.state;
+        const {itens, error, loading, codeError} = this.state;
 
         console.log('Deatails', itens);
 
@@ -90,7 +93,27 @@ class Details extends Component {
                     </BoxTitle>
 
                     <ListDetails data={itens[0].infoDetails}/>
+                    <FooterDetails>
+                        <ButtonFooter>
+                            <Icon
+                                name="star"
+                                size={26}
+                                color={(this.state.favorite)
+                                ? "#D9CA00"
+                                : "#bbb"}/>
+                            <TitleButtonFooter>back to list</TitleButtonFooter>
+                        </ButtonFooter>
 
+                        <ButtonFooter>
+                            <Icon
+                                name="star"
+                                size={26}
+                                color={(this.state.favorite)
+                                ? "#D9CA00"
+                                : "#bbb"}/>
+                            <TitleButtonFooter>Favorite</TitleButtonFooter>
+                        </ButtonFooter>
+                    </FooterDetails>
                 </Container>
             </Wrapper>
         );
@@ -102,8 +125,6 @@ class Details extends Component {
             this.setState({loading: true});
             const response = await Api.get(urlRefer)
             let res = response.data.data.results;
-
-            //console.log(res);
 
             let itens = [];
             switch (this.props.category.urlRefer) {

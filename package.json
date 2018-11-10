@@ -8,8 +8,7 @@
     "precommit": "pretty-quick --staged",
     "flow": "flow",
     "flowstop": "flow stop",
-    "build": "babel src/ -d lib/",
-    "prepublish": "npm run build"
+    "lint": "eslint '**/*.{js,jsx}'"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -32,6 +31,7 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
