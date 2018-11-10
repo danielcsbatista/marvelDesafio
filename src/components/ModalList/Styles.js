@@ -14,7 +14,7 @@ const Modal = styled.Modal `
 `;
 
 const TitleModal = styled.Text `
-        font-size:24;
+        font-size:20;
         color:#fff; 
         text-align: center;
         margin-top:10;
@@ -24,6 +24,7 @@ const TitleModal = styled.Text `
         border-radius:3;
         background-color:#333;
         padding-bottom:3;
+        padding-top:3;
 `;
 
 const ContainerList = styled.View `        

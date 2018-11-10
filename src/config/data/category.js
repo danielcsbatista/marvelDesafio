@@ -142,26 +142,6 @@ const category = {
                     value: '-startYear'
                 }
             ]
-        }, {
-            title: 'STORIES',
-            imgSrc: require('../../shared/images/stories.png'),
-            urlRefer: 'stories',
-            paramSearch: '',
-            orderBy: [
-                {
-                    name: 'Asc.',
-                    value: 'id'
-                }, {
-                    name: 'Modified asc.',
-                    value: 'modified'
-                }, {
-                    name: 'Desc.',
-                    value: '-id'
-                }, {
-                    name: 'Modified desc.',
-                    value: '-modified'
-                }
-            ]
         }
     ]
 };

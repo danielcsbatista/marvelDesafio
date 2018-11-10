@@ -7,7 +7,11 @@ export default class SectionListHeader extends React.Component
     {
         return (
             <Container>
-                <TituloItem>{this.props.section.title}</TituloItem>
+                <TituloItem>{this
+                        .props
+                        .section
+                        .title
+                        .toUpperCase()}</TituloItem>
             </Container>
         );
     }

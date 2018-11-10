@@ -35,16 +35,13 @@ class ModalList extends Component
                 <ModalContainer>
                     <BoxModal>
                         <TitleModal>
-                            teste 3
+                           {this.props.title}
                         </TitleModal>
                         <ContainerList>
 
-                            {this
-                                .props
-                                .itemsOrder
-                                .map((item, index) => {
+                            {this.props.itemsOrder.map((item, index) => {
                                     return <ButtonFilter key={index} onPress={() => this.props.callFunction(item.value)}>
-                                        <TitleButton>{item.name}</TitleButton>
+                                        <TitleButton>{item.name.toUpperCase()}</TitleButton>
                                     </ButtonFilter>
                                 })}
 

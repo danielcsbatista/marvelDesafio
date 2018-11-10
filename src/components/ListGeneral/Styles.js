@@ -13,7 +13,7 @@ const ButtomItem = styled.TouchableOpacity `
         flex-direction: row;            
         padding-right:2;
         margin-top:3;
-`; 
+`;
 
 const ImageItem = styled.Image `
         flex: 2;
@@ -39,7 +39,7 @@ const SubTitleItem = styled.Text `
         text-align: justify;
 `;
 
-const FavoriteItem = styled.View `
+const FavoriteItem = styled.TouchableOpacity `
         flex: 1;
         width: 50;
         height: 60;

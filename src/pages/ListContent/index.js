@@ -18,6 +18,9 @@ import {
   Row
 } from './Styles';
 import Api from '../../services/api';
+import {bindActionCreators} from 'redux';
+import * as categoryActions from '../../config/actions/category';
+import * as favoritesActions from '../../config/actions/favorites';
 import {connect} from 'react-redux';
 import securityKey from '../../services/securityKey';
 import {menuFooter} from '../../config/data/menuFooter';
@@ -36,7 +39,8 @@ class ListContent extends Component
       codeError: '',
       showSearch: false,
       paramSearch: '',
-      paramOrder: ''
+      paramOrder: '',
+      titleModalList: ''
     }
   };
 
@@ -97,10 +101,13 @@ class ListContent extends Component
             numColumns={1}
             renderItem={({item}) => {
             return (<ListGeneral
+              id={item.id}
               title={item.title}
               subTitle={item.subTitle}
               callFunction={() => this._onPressItemListGeneral(item)}
-              imgSrc={item.imgSrc}/>)
+              imgSrc={item.imgSrc}
+              favorite={item.favorite}
+              callAddFavorite={this._onPressFavorite}/>)
           }}/>
           <Footer>
             {menuFooter
@@ -117,6 +124,7 @@ class ListContent extends Component
         </Container>
         <ModalList
           ref="ModalList"
+          title={this.state.titleModalList}
           display={this.state.display}
           itemsOrder={this.props.category.orderBy}
           callFunction={this._onPressFilter}/>
@@ -133,6 +141,7 @@ class ListContent extends Component
           .navigation
           .navigate('Home');
       case 'FILTER_MODAL':
+        this.setState({titleModalList: 'SELECT A FILTER'});
         this
           .refs
           .ModalList
@@ -148,7 +157,7 @@ class ListContent extends Component
         this.setState({showSearch: true});
         break;
       default:
-        return Alert.alert('Verifique o objeto "menuFooter" importado ');
+        return Alert.alert('Ação não encontrada, verifique o objeto "menuFooter" importado ');
     }
   }
 
@@ -159,22 +168,65 @@ class ListContent extends Component
 
   _onPressFilter = (params) => {
 
-    console.log(params);
     this.setState({paramOrder: params});
     this.apiSubmit(`${this.props.category.urlRefer}?orderBy=${params}&${securityKey.urlKey()}`);
   }
 
   _onPressItemListGeneral = (params) => {
+
+    let paramsActions = {
+      urlRefer: this.props.category.urlRefer,
+      idItemCategory: params.id,
+      favoriteItem: false
+    };
+
+    this
+      .props
+      .actions
+      .categoryActions
+      .getItemcategory(paramsActions);
+
     this
       .props
       .navigation
       .navigate('Details');
   }
 
+  _onPressFavorite = (params) => {
+
+    const {addFavorite, removeFavorite} = this.props.actions.favoritesActions;
+
+    if (params.favoriteItem) {
+      addFavorite(params);
+    } else {
+
+      let favorites = this
+        .props
+        .favorites
+        .filter((items) => items.idItemCategory !== params.idItemCategory);
+
+      removeFavorite(favorites);
+    }
+  }
+
+  verifyFavorite = (idItemCategory) => {
+
+    const {favorites} = this.props
+
+    let checkFavorite = (favorites.length > 0)
+      ? favorites.filter((items) => {
+        return items.idItemCategory == idItemCategory && items.favoriteItem
+      })
+      : favorites;
+
+    let isFavorite = (checkFavorite.length > 0)
+      ? true
+      : false;
+    return isFavorite;
+  }
+
   async apiSubmit(urlRefer)
   {
-    console.log(urlRefer);
-
     try {
 
       this.setState({loading: true, showSearch: false});
@@ -193,23 +245,21 @@ class ListContent extends Component
               subTitle: (item.description !== null)
                 ? doTruncarStr(item.description, 50)
                 : 'Not released',
-              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+              favorite: this.verifyFavorite(item.id)
             }
           });
 
           break;
-        case 'story':
-          itens = res.map((item) => {
-            return {id: item.id, title: item.title}
-          });
-          break;
+
         case 'characters':
           itens = res.map((item) => {
             return {
               id: item.id,
               title: item.name,
-              subTitle: doTruncarStr(item.description, 70),
-              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+              subTitle: doTruncarStr(item.description, 50),
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+              favorite: this.verifyFavorite(item.id)
             }
           });
           break;
@@ -218,13 +268,14 @@ class ListContent extends Component
             return {
               id: item.id,
               title: item.fullName || 'Not Released',
-              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
+              imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+              favorite: this.verifyFavorite(item.id)
             }
           });
           break;
-
         default:
-          break;
+          return Alert.alert('Categoria não encontrada, verifique o objeto "category" em config > data ');
+
       }
 
       this.setState({itens, loading: false});
@@ -242,6 +293,15 @@ class ListContent extends Component
   }
 }
 
-const mapsStateToProps = state => ({category: state.category});
+const mapsStateToProps = state => ({category: state.category, favorites: state.favorites});
 
-export default connect(mapsStateToProps)(ListContent)
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: {
+      categoryActions: bindActionCreators(categoryActions, dispatch),
+      favoritesActions: bindActionCreators(favoritesActions, dispatch)
+    }
+  };
+}
+
+export default connect(mapsStateToProps, mapDispatchToProps)(ListContent)
