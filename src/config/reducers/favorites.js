@@ -1,16 +1,30 @@
-const ADD_FAVORITE = 'ADD_FAVORITE';
-const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
-const favorites = (state = [], action) => {
+import type { AddFavorite, RemoveFavorite } from '../actions/favorites';
+import { ADD_FAVORITE, REMOVE_FAVORITE } from '../actions/favorites';
 
-    switch (action.type) {
-        case ADD_FAVORITE:
-            return [...state, {idItemCategory: action.payload.idItemCategory, favoriteItem: action.payload.favoriteItem}]
-        
-        case REMOVE_FAVORITE:
-            return  action.payload
-        default:
-        return state;
-    }
-}
+export type FavoriteStore = Array<{
+  idItemCategory: number,
+  favoriteItem: boolean,
+}>;
 
-export default favorites
+const favorites = (
+  state: FavoriteStore = [],
+  action: AddFavorite | RemoveFavorite
+) => {
+  switch (action.type) {
+    case ADD_FAVORITE:
+      return [
+        ...state,
+        {
+          idItemCategory: action.payload.idItemCategory,
+          favoriteItem: action.payload.favoriteItem,
+        },
+      ];
+
+    case REMOVE_FAVORITE:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+export default favorites;

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const SectionList = styled.SectionList `
-        flex: 1;  
+const SectionList = styled.SectionList`
+  flex: 1;
 `;
-export {SectionList}
+export default SectionList;

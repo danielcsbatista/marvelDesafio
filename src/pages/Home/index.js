@@ -1,57 +1,71 @@
-import React, {Component} from 'react';
-import {Container} from './Styles';
-import {Wrapper, ListInitial} from '../../components';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { type NavigationScreenProp } from 'react-navigation';
+import { Container } from './Styles';
+import { Wrapper, ListInitial } from '../../components';
 import * as categoryActions from '../../config/actions/category';
-import {connect} from 'react-redux';
-import {category} from '../../config/data/category';
+import type { Content, Data } from './types';
+import categoryData, {
+  type ObjectdataCategory,
+} from '../../config/data/category';
 
-class Home extends Component {
-  constructor(props)
-  {
-    super(props);
-    this.state = {}
+type Props = {
+  category: {
+    data: Array<Data>,
+  },
+  getCategory: (params: Content) => void,
+  navigation: NavigationScreenProp<{}>,
+};
 
-  }
-
+class Home extends Component<Props> {
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
-  _onPress(content)
-  {
-    this
-      .props
-      .getCategory(content);
-    this
-      .props
-      .navigation
-      .navigate('ListContent');
+  onPress(content: Content) {
+    console.log(this.props);
+    this.props.getCategory(content);
+    this.props.navigation.navigate('ListContent');
   }
 
-  render()
-  {
+  render() {
     return (
       <Wrapper>
         <Container>
-          {category
-            .data
-            .map((itens, i) => {
-              return <ListInitial
-                imgSrc={itens.imgSrc}
-                title={itens.title}
-                key={i}
-                callFunction={() => this._onPress({urlRefer: itens.urlRefer, nameCategory: itens.title, paramSearch: itens.paramSearch, orderBy: itens.orderBy})}/>
-            })
-}
+          {categoryData.data.map((itens: ObjectdataCategory, i) => (
+            <ListInitial
+              imgSrc={itens.imgSrc}
+              title={itens.title}
+              key={i}
+              callFunction={() =>
+                this.onPress({
+                  urlRefer: itens.urlRefer,
+                  nameCategory: itens.title,
+                  paramSearch: itens.paramSearch,
+                  orderBy: itens.orderBy,
+                })
+              }
+            />
+          ))}
         </Container>
       </Wrapper>
     );
   }
 }
 
-const mapsStateToProps = state => ({category: state.category});
-
-const mapDispatchToProps = dispatch => bindActionCreators(categoryActions, dispatch);
-
-export default connect(mapsStateToProps, mapDispatchToProps)(Home)
+const mapsStateToProps = state => ({
+  ...state.category,
+});
+const mapDispatchToProps = (dispatch: Function) => ({
+  categoryActions: bindActionCreators(
+    {
+      getItemcategory: categoryActions.getItemcategory,
+    },
+    dispatch
+  ),
+});
+export default connect(
+  mapsStateToProps,
+  mapDispatchToProps
+)(Home);

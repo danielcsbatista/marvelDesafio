@@ -1,23 +1,21 @@
-import React, {Component} from 'react';
-import {StatusBar} from 'react-native';
-import {WrapperApp, TopMarvel, ContentBody, Image, BackImage} from './Styles';
+import React, { type Element } from 'react';
+import { WrapperApp, TopMarvel, ContentBody, Image, BackImage } from './Styles';
 
-export default class Wrapper extends Component {
-    render()
-    {
-        return (
-            <WrapperApp>
-                <TopMarvel>
-                    <BackImage source={require('../../shared/images/back-top.png')}>
-                        <Image
-                            source={require('../../shared/images/logo-marvel.png')}
-                            ImageResizeMode="contain"/>
-                    </BackImage>
-                </TopMarvel>
-                <ContentBody>
-                    {this.props.children}
-                </ContentBody>
-            </WrapperApp>
-        );
-    }
-}
+const imageBack = require('../../shared/images/back-top.png');
+const logoMarvel = require('../../shared/images/logo-marvel.png');
+
+type Props = {
+  children: Element<*>,
+};
+const Wrapper = (props: Props) => (
+  <WrapperApp>
+    <TopMarvel>
+      <BackImage source={imageBack}>
+        <Image source={logoMarvel} ImageResizeMode="contain" />
+      </BackImage>
+    </TopMarvel>
+    <ContentBody>{props.children}</ContentBody>
+  </WrapperApp>
+);
+
+export default Wrapper;

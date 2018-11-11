@@ -1,13 +1,18 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["react", "react-native"],
+  "plugins": ["react", "react-native", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
     }
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
   "rules": {
     "arrow-body-style": "warn"
   }

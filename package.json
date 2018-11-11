@@ -1,14 +1,17 @@
 {
-  "name": "marvelDesafio",
+  "name": "marveldesafio",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "precommit": "pretty-quick --staged",
-    "flow": "flow",
+    "flow-typed": "flow-typed install",
+    "postinstall": "npm run flow-typed",
+    "flow": "flow check",
     "flowstop": "flow stop",
-    "lint": "eslint '**/*.{js,jsx}'"
+    "lint": "eslint '**/*.{js,jsx}'",
+    "format": "prettier --write src/**/*.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
@@ -35,7 +38,8 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
-    "flow-bin": "^0.33.0",
+    "flow-bin": "^0.80.0",
+    "flow-typed": "^2.5.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
     "prettier": "^1.14.3",

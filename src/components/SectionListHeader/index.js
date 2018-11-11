@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
-import {Container, TituloItem} from './Styles';
+import React from 'react';
+import { Container, TituloItem } from './Styles';
 
-export default class SectionListHeader extends React.Component
-{
-    render()
-    {
-        return (
-            <Container>
-                <TituloItem>{this
-                        .props
-                        .section
-                        .title
-                        .toUpperCase()}</TituloItem>
-            </Container>
-        );
-    }
-}
+type Props = {
+  section: Object,
+};
+
+const SectionListHeader = (props: Props) => (
+  <Container>
+    <TituloItem>{props.section.title.toUpperCase()}</TituloItem>
+  </Container>
+);
+
+export default SectionListHeader;

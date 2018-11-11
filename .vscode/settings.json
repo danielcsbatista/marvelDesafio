@@ -1,5 +1,23 @@
 {
-    "[javascript]": {
-        "editor.formatOnSave": true
-    }
+  "git.autofetch": true,
+  "flow.runOnAllFiles": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabCompletion": "on",
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "editor.snippetSuggestions": "top",
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "files.trimTrailingWhitespace": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "editor.wordBasedSuggestions": false,
+  "javascript.validate.enable": false,
+  "colorize.files_extensions": [".js"],
+  "flow.useNPMPackagedFlow": true,
+  "window.nativeTabs": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
 }

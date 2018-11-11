@@ -1,45 +1,53 @@
-import React, {Component} from 'react';
-import {Linking} from 'react-native';
-import {Container, TextItem, ContainerListUrl, ButtomLink, TitleButtomLink} from './Styles';
+import React from 'react';
+/* $FlowFixMe https://github.com/flowtype/flow-for-vscode/issues/215 */
+import { Linking } from 'react-native';
+import {
+  Container,
+  TextItem,
+  ContainerListUrl,
+  ButtomLink,
+  TitleButtomLink,
+} from './Styles';
 
-export default class SectionListItem extends Component
-{
-    render()
-    {
-        if (this.props.data.type === 'text') {
-            return (
-                <Container>
-                    <TextItem>{this.props.data.item || 'Not released'}</TextItem>
-                </Container>
-            );
-        }
+type Props = {
+  data: {
+    item: Array<{
+      description: string,
+      url: string,
+      name: string,
+      type: string,
+    }>,
+    type: string,
+  },
+};
 
-        if (this.props.data.type === 'urllist') {
+const SectionListItem = (props: Props) => {
+  if (props.data.type === 'text') {
+    return (
+      <Container>
+        <TextItem>{props.data.item || 'Not released'}</TextItem>
+      </Container>
+    );
+  }
 
-            return (
-                <Container>
-                    {this
-                        .props
-                        .data
-                        .item
-                        .map((items, index) => {
-                            return (
-                                <ContainerListUrl key={index}>
-                                    <ButtomLink
-                                        onPress={() => {
-                                        Linking.openURL(items.url)
-                                    }}>
-                                        <TitleButtomLink>
-                                            {items
-                                                .type
-                                                .toUpperCase()}
-                                        </TitleButtomLink>
-                                    </ButtomLink>
-                                </ContainerListUrl>
-                            );
-                        })}
-                </Container>
-            );
-        }
-    }
-}
+  if (props.data.type === 'urllist') {
+    return (
+      <Container>
+        {props.data.item.map((items, index) => (
+          <ContainerListUrl key={index}>
+            <ButtomLink
+              onPress={() => {
+                Linking.openURL(items.url);
+              }}
+            >
+              <TitleButtomLink>{items.type.toUpperCase()}</TitleButtomLink>
+            </ButtomLink>
+          </ContainerListUrl>
+        ))}
+      </Container>
+    );
+  }
+  return null;
+};
+
+export default SectionListItem;
