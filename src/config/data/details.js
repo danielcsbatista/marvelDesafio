@@ -120,7 +120,7 @@ const comicsDetails = (item: ComicsDetails) => ({
     },
   ],
   title: item.title,
-  image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+  image: `${item.thumbnail.path}/landscape_xlarge.${item.thumbnail.extension}`,
 });
 
 type CreatorsDetails = {
@@ -149,7 +149,7 @@ const creatorsDetails = (item: CreatorsDetails) => ({
     },
   ],
   title: item.fullName,
-  image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+  image: `${item.thumbnail.path}/landscape_xlarge.${item.thumbnail.extension}`,
 });
 
 type SeriesDetails = {
@@ -202,7 +202,7 @@ const seriesDetails = (item: SeriesDetails) => ({
     },
   ],
   title: item.title,
-  image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+  image: `${item.thumbnail.path}/landscape_xlarge.${item.thumbnail.extension}`,
 });
 
 type EventsDetails = {
@@ -255,7 +255,7 @@ const eventsDetails = (item: EventsDetails) => ({
     },
   ],
   title: item.title,
-  image: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+  image: `${item.thumbnail.path}/landscape_xlarge.${item.thumbnail.extension}`,
 });
 
 export {

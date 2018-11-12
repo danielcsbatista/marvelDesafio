@@ -35,6 +35,12 @@ const Row = styled.View`
   flex: 1.2;
 `;
 
+const ContainerLoaderScroll = styled.View`
+   align-self: center;
+   margin-top: 20;
+   margin-bottom: 20;
+`;
+
 export {
   Container,
   ScrollItens,
@@ -42,4 +48,5 @@ export {
   CategoryListTitle,
   TitleCategory,
   Row,
+  ContainerLoaderScroll,
 };

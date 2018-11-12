@@ -1,0 +1,35 @@
+[
+  {
+    "infoDetails": [
+      {
+        "data": [
+          {
+            "item": "Rick Jones has been Hulk's ... ",
+            "type": "text"
+          }
+        ],
+        "title": "Description"
+      },
+      {
+        "data": [
+          {
+            "item": [
+              {
+                "type": "detail",
+                "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6"
+              },
+              {
+                "type": "comiclink",
+                "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6"
+              }
+            ],
+            "type": "urllist"
+          }
+        ],
+        "title": "More information"
+      }
+    ],
+    "title": "A-Bomb (HAS)",
+    "image": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg"
+  }
+]

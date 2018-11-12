@@ -13,7 +13,7 @@ const ListDetails = (props: Props) => (
       <SectionListHeader section={section} />
     )}
     sections={props.data}
-    keyExtractor={() => (Math.random() * 100).toString()}
+    keyExtractor={() => (Math.random() * 1000).toString()}
   />
 );
 

@@ -1,0 +1,1012 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details renders <Details /> without crashing 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Details />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <Styled(ScrollView)>
+        <Styled(Component)
+          source={
+            Object {
+              "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+            }
+          }
+        />
+        <Styled(Component)>
+          <Styled(Component)>
+            A-Bomb (HAS)
+          </Styled(Component)>
+        </Styled(Component)>
+        <ListDetails
+          data={
+            Array [
+              Object {
+                "data": Array [
+                  Object {
+                    "item": "Rick Jones has been Hulk's ... ",
+                    "type": "text",
+                  },
+                ],
+                "title": "Description",
+              },
+              Object {
+                "data": Array [
+                  Object {
+                    "item": Array [
+                      Object {
+                        "type": "detail",
+                        "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                      },
+                      Object {
+                        "type": "comiclink",
+                        "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                      },
+                    ],
+                    "type": "urllist",
+                  },
+                ],
+                "title": "More information",
+              },
+            ]
+          }
+        />
+        <Styled(Component)>
+          <Styled(TouchableOpacity)>
+            <Icon
+              allowFontScaling={false}
+              color="#bbb"
+              name="star"
+              size={26}
+            />
+            <Styled(Component)>
+              back to list
+            </Styled(Component)>
+          </Styled(TouchableOpacity)>
+          <Styled(TouchableOpacity)>
+            <Icon
+              allowFontScaling={false}
+              color="#bbb"
+              name="star"
+              size={26}
+            />
+            <Styled(Component)>
+              Favorite
+            </Styled(Component)>
+          </Styled(TouchableOpacity)>
+        </Styled(Component)>
+      </Styled(ScrollView)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Styled(Component)
+            source={
+              Object {
+                "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+              }
+            }
+          />,
+          <Styled(Component)>
+            <Styled(Component)>
+              A-Bomb (HAS)
+            </Styled(Component)>
+          </Styled(Component)>,
+          <ListDetails
+            data={
+              Array [
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": "Rick Jones has been Hulk's ... ",
+                      "type": "text",
+                    },
+                  ],
+                  "title": "Description",
+                },
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": Array [
+                        Object {
+                          "type": "detail",
+                          "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                        Object {
+                          "type": "comiclink",
+                          "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                      ],
+                      "type": "urllist",
+                    },
+                  ],
+                  "title": "More information",
+                },
+              ]
+            }
+          />,
+          <Styled(Component)>
+            <Styled(TouchableOpacity)>
+              <Icon
+                allowFontScaling={false}
+                color="#bbb"
+                name="star"
+                size={26}
+              />
+              <Styled(Component)>
+                back to list
+              </Styled(Component)>
+            </Styled(TouchableOpacity)>
+            <Styled(TouchableOpacity)>
+              <Icon
+                allowFontScaling={false}
+                color="#bbb"
+                name="star"
+                size={26}
+              />
+              <Styled(Component)>
+                Favorite
+              </Styled(Component)>
+            </Styled(TouchableOpacity)>
+          </Styled(Component)>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": Object {
+              "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Styled(Component)>
+              A-Bomb (HAS)
+            </Styled(Component)>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "A-Bomb (HAS)",
+            },
+            "ref": null,
+            "rendered": "A-Bomb (HAS)",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "data": Array [
+              Object {
+                "data": Array [
+                  Object {
+                    "item": "Rick Jones has been Hulk's ... ",
+                    "type": "text",
+                  },
+                ],
+                "title": "Description",
+              },
+              Object {
+                "data": Array [
+                  Object {
+                    "item": Array [
+                      Object {
+                        "type": "detail",
+                        "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                      },
+                      Object {
+                        "type": "comiclink",
+                        "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                      },
+                    ],
+                    "type": "urllist",
+                  },
+                ],
+                "title": "More information",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Styled(TouchableOpacity)>
+                <Icon
+                  allowFontScaling={false}
+                  color="#bbb"
+                  name="star"
+                  size={26}
+                />
+                <Styled(Component)>
+                  back to list
+                </Styled(Component)>
+              </Styled(TouchableOpacity)>,
+              <Styled(TouchableOpacity)>
+                <Icon
+                  allowFontScaling={false}
+                  color="#bbb"
+                  name="star"
+                  size={26}
+                />
+                <Styled(Component)>
+                  Favorite
+                </Styled(Component)>
+              </Styled(TouchableOpacity)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Icon
+                    allowFontScaling={false}
+                    color="#bbb"
+                    name="star"
+                    size={26}
+                  />,
+                  <Styled(Component)>
+                    back to list
+                  </Styled(Component)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "allowFontScaling": false,
+                    "color": "#bbb",
+                    "name": "star",
+                    "size": 26,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "back to list",
+                  },
+                  "ref": null,
+                  "rendered": "back to list",
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Icon
+                    allowFontScaling={false}
+                    color="#bbb"
+                    name="star"
+                    size={26}
+                  />,
+                  <Styled(Component)>
+                    Favorite
+                  </Styled(Component)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "allowFontScaling": false,
+                    "color": "#bbb",
+                    "name": "star",
+                    "size": 26,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Favorite",
+                  },
+                  "ref": null,
+                  "rendered": "Favorite",
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [MockFunction],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Styled(ScrollView)>
+          <Styled(Component)
+            source={
+              Object {
+                "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+              }
+            }
+          />
+          <Styled(Component)>
+            <Styled(Component)>
+              A-Bomb (HAS)
+            </Styled(Component)>
+          </Styled(Component)>
+          <ListDetails
+            data={
+              Array [
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": "Rick Jones has been Hulk's ... ",
+                      "type": "text",
+                    },
+                  ],
+                  "title": "Description",
+                },
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": Array [
+                        Object {
+                          "type": "detail",
+                          "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                        Object {
+                          "type": "comiclink",
+                          "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                      ],
+                      "type": "urllist",
+                    },
+                  ],
+                  "title": "More information",
+                },
+              ]
+            }
+          />
+          <Styled(Component)>
+            <Styled(TouchableOpacity)>
+              <Icon
+                allowFontScaling={false}
+                color="#bbb"
+                name="star"
+                size={26}
+              />
+              <Styled(Component)>
+                back to list
+              </Styled(Component)>
+            </Styled(TouchableOpacity)>
+            <Styled(TouchableOpacity)>
+              <Icon
+                allowFontScaling={false}
+                color="#bbb"
+                name="star"
+                size={26}
+              />
+              <Styled(Component)>
+                Favorite
+              </Styled(Component)>
+            </Styled(TouchableOpacity)>
+          </Styled(Component)>
+        </Styled(ScrollView)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Styled(Component)
+              source={
+                Object {
+                  "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+                }
+              }
+            />,
+            <Styled(Component)>
+              <Styled(Component)>
+                A-Bomb (HAS)
+              </Styled(Component)>
+            </Styled(Component)>,
+            <ListDetails
+              data={
+                Array [
+                  Object {
+                    "data": Array [
+                      Object {
+                        "item": "Rick Jones has been Hulk's ... ",
+                        "type": "text",
+                      },
+                    ],
+                    "title": "Description",
+                  },
+                  Object {
+                    "data": Array [
+                      Object {
+                        "item": Array [
+                          Object {
+                            "type": "detail",
+                            "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                          },
+                          Object {
+                            "type": "comiclink",
+                            "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                          },
+                        ],
+                        "type": "urllist",
+                      },
+                    ],
+                    "title": "More information",
+                  },
+                ]
+              }
+            />,
+            <Styled(Component)>
+              <Styled(TouchableOpacity)>
+                <Icon
+                  allowFontScaling={false}
+                  color="#bbb"
+                  name="star"
+                  size={26}
+                />
+                <Styled(Component)>
+                  back to list
+                </Styled(Component)>
+              </Styled(TouchableOpacity)>
+              <Styled(TouchableOpacity)>
+                <Icon
+                  allowFontScaling={false}
+                  color="#bbb"
+                  name="star"
+                  size={26}
+                />
+                <Styled(Component)>
+                  Favorite
+                </Styled(Component)>
+              </Styled(TouchableOpacity)>
+            </Styled(Component)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": Object {
+                "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Styled(Component)>
+                A-Bomb (HAS)
+              </Styled(Component)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "A-Bomb (HAS)",
+              },
+              "ref": null,
+              "rendered": "A-Bomb (HAS)",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "data": Array [
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": "Rick Jones has been Hulk's ... ",
+                      "type": "text",
+                    },
+                  ],
+                  "title": "Description",
+                },
+                Object {
+                  "data": Array [
+                    Object {
+                      "item": Array [
+                        Object {
+                          "type": "detail",
+                          "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                        Object {
+                          "type": "comiclink",
+                          "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+                        },
+                      ],
+                      "type": "urllist",
+                    },
+                  ],
+                  "title": "More information",
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Styled(TouchableOpacity)>
+                  <Icon
+                    allowFontScaling={false}
+                    color="#bbb"
+                    name="star"
+                    size={26}
+                  />
+                  <Styled(Component)>
+                    back to list
+                  </Styled(Component)>
+                </Styled(TouchableOpacity)>,
+                <Styled(TouchableOpacity)>
+                  <Icon
+                    allowFontScaling={false}
+                    color="#bbb"
+                    name="star"
+                    size={26}
+                  />
+                  <Styled(Component)>
+                    Favorite
+                  </Styled(Component)>
+                </Styled(TouchableOpacity)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      allowFontScaling={false}
+                      color="#bbb"
+                      name="star"
+                      size={26}
+                    />,
+                    <Styled(Component)>
+                      back to list
+                    </Styled(Component)>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "allowFontScaling": false,
+                      "color": "#bbb",
+                      "name": "star",
+                      "size": 26,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "back to list",
+                    },
+                    "ref": null,
+                    "rendered": "back to list",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Icon
+                      allowFontScaling={false}
+                      color="#bbb"
+                      name="star"
+                      size={26}
+                    />,
+                    <Styled(Component)>
+                      Favorite
+                    </Styled(Component)>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "allowFontScaling": false,
+                      "color": "#bbb",
+                      "name": "star",
+                      "size": 26,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Favorite",
+                    },
+                    "ref": null,
+                    "rendered": "Favorite",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [MockFunction],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
+
+exports[`Details renders <Error /> without crashing 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Details />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <Styled(ScrollView)>
+        <Error
+          codeError={0}
+        />
+      </Styled(ScrollView)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Error
+          codeError={0}
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "codeError": 0,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [MockFunction],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Styled(ScrollView)>
+          <Error
+            codeError={0}
+          />
+        </Styled(ScrollView)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Error
+            codeError={0}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "codeError": 0,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [MockFunction],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
+
+exports[`Details renders <Loader /> without crashing 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Details />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <Styled(ScrollView)>
+        <Loader />
+      </Styled(ScrollView)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Loader />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [MockFunction],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <Styled(ScrollView)>
+          <Loader />
+        </Styled(ScrollView)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Loader />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [MockFunction],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
+
+exports[`Details shoudl call mapApiToDetails and return  1`] = `
+Array [
+  Object {
+    "image": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+    "infoDetails": Array [
+      Object {
+        "data": Array [
+          Object {
+            "item": "Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction! ",
+            "type": "text",
+          },
+        ],
+        "title": "Description",
+      },
+      Object {
+        "data": Array [
+          Object {
+            "item": Array [
+              Object {
+                "type": "detail",
+                "url": "http://marvel.com/characters/76/a-bomb?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+              },
+              Object {
+                "type": "comiclink",
+                "url": "http://marvel.com/comics/characters/1017100/a-bomb_has?utm_campaign=apiRef&utm_source=7ba8793224474d90fc1052b5616844c6",
+              },
+            ],
+            "type": "urllist",
+          },
+        ],
+        "title": "More information",
+      },
+    ],
+    "title": "A-Bomb (HAS)",
+  },
+]
+`;

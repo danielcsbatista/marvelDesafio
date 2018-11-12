@@ -1,11 +1,11 @@
-import React, { type Element } from 'react';
+import React from 'react';
 import { WrapperApp, TopMarvel, ContentBody, Image, BackImage } from './Styles';
 
 const imageBack = require('../../shared/images/back-top.png');
 const logoMarvel = require('../../shared/images/logo-marvel.png');
 
 type Props = {
-  children: Element<*>,
+  children: any,
 };
 const Wrapper = (props: Props) => (
   <WrapperApp>

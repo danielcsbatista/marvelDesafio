@@ -2,30 +2,31 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { type NavigationScreenProp } from 'react-navigation';
-import { Container } from './Styles';
+import Container from './Styles';
 import { Wrapper, ListInitial } from '../../components';
 import * as categoryActions from '../../config/actions/category';
 import type { Content, Data } from './types';
 import categoryData, {
-  type ObjectdataCategory,
+  type ObjectDataCategory,
 } from '../../config/data/category';
 
 type Props = {
   category: {
     data: Array<Data>,
   },
-  getCategory: (params: Content) => void,
+  categoryActions: {
+    getCategory: (params: Content) => void,
+  },
   navigation: NavigationScreenProp<{}>,
 };
 
-class Home extends Component<Props> {
+export class Home extends Component<Props> {
   static navigationOptions = {
     header: null,
   };
 
   onPress(content: Content) {
-    console.log(this.props);
-    this.props.getCategory(content);
+    this.props.categoryActions.getCategory(content);
     this.props.navigation.navigate('ListContent');
   }
 
@@ -33,7 +34,7 @@ class Home extends Component<Props> {
     return (
       <Wrapper>
         <Container>
-          {categoryData.data.map((itens: ObjectdataCategory, i) => (
+          {categoryData.data.map((itens: ObjectDataCategory, i) => (
             <ListInitial
               imgSrc={itens.imgSrc}
               title={itens.title}
@@ -59,9 +60,7 @@ const mapsStateToProps = state => ({
 });
 const mapDispatchToProps = (dispatch: Function) => ({
   categoryActions: bindActionCreators(
-    {
-      getItemcategory: categoryActions.getItemcategory,
-    },
+    { getCategory: categoryActions.getCategory },
     dispatch
   ),
 });

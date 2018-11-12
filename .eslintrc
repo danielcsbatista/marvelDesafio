@@ -1,11 +1,14 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["react", "react-native", "prettier"],
+  "plugins": ["react", "react-native", "prettier", "jest"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
       "modules": true
     }
+  },
+  "env": {
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
@@ -15,5 +18,11 @@
   ],
   "rules": {
     "arrow-body-style": "warn"
+  },
+  "globals": {
+    "document": true,
+    "shallow": true,
+    "renderer": true,
+    "mount": true
   }
 }

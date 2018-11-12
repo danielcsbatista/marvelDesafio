@@ -4,7 +4,7 @@ const eventsImage = require('../../shared/images/events.png');
 const creatorsImage = require('../../shared/images/creators.png');
 const seriesImage = require('../../shared/images/series.png');
 
-export type ObjectdataCategory = {
+export type ObjectDataCategory = {
   title: string,
   imgSrc: string,
   urlRefer: string,
@@ -16,7 +16,7 @@ export type ObjectdataCategory = {
 };
 
 export type CategoryData = {
-  data: Array<ObjectdataCategory>,
+  data: Array<ObjectDataCategory>,
 };
 
 const categoryData: CategoryData = {

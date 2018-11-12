@@ -5,7 +5,7 @@ type CategoryStore = {
   urlRefer?: string,
   idItemCategory?: number,
   favoriteItem?: boolean,
-  orderBy: Array<{
+  orderBy?: Array<{
     name: String,
     value: String,
   }>,

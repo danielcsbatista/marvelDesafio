@@ -21,5 +21,5 @@ export {
   SectionListItem,
   Wrapper,
   Loader,
-  SearchContent
+  SearchContent,
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 /* $FlowFixMe https://github.com/flowtype/flow-for-vscode/issues/215 */
-import { Alert } from 'react-native';
+import { Alert, Modal, ActivityIndicator } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { type NavigationScreenProp } from 'react-navigation';
@@ -20,6 +20,7 @@ import {
   CategoryListTitle,
   TitleCategory,
   Row,
+  ContainerLoaderScroll,
 } from './Styles';
 import Api from '../../services/api';
 import * as categoryActions from '../../config/actions/category';
@@ -33,22 +34,26 @@ import { type FavoriteStore } from '../../config/reducers/favorites';
 type Props = {
   category: Content,
   navigation: NavigationScreenProp<{}>,
-  getItemcategory: (params: Object) => void,
-  addFavorite: Function,
-  removeFavorite: Function,
   favorites: FavoriteStore,
+  categoryActions: {
+    getItemcategory: (params: Object) => void,
+    addFavorite: Function,
+    removeFavorite: Function,
+  },
 };
 
 type State = {
   itens: Array<Object>,
   display: boolean,
   error: boolean,
+  loadingInitial: boolean,
   loading: boolean,
   codeError: number,
   showSearch: boolean,
   paramSearch: string,
   paramOrder: string,
   titleModalList: string,
+  page: number,
 };
 
 class ListContent extends Component<Props, State> {
@@ -56,29 +61,39 @@ class ListContent extends Component<Props, State> {
     itens: [],
     display: false,
     error: false,
-    loading: true,
+    loadingInitial: true,
     codeError: 0,
     showSearch: false,
     paramSearch: '',
     paramOrder: '',
     titleModalList: '',
+    loading: false,
+    page: 0,
   };
 
-  ModalList = React.createRef();
+  ModalList: Modal = React.createRef();
 
   static navigationOptions = {
     header: null,
   };
 
   componentDidMount() {
-    const initialCallApi = `${
-      this.props.category.urlRefer
-    }?${securityKey.urlKey()}`;
-    this.apiSubmit(initialCallApi);
+    this.loadApiList();
   }
 
+  loadApiList = () => {    
+
+    const {paramOrder, page} = this.state;   
+    const initialCallApi = `${this.props.category.urlRefer}?limit=10&offset=${page}&orderBy=${paramOrder}&${securityKey.urlKey()}`;
+    if(!this.state.loading)
+    {
+        this.apiSubmit(initialCallApi);
+    }    
+  };
+
   render() {
-    if (this.state.error) {
+      
+      if (this.state.error) {
       return (
         <Wrapper>
           <Container>
@@ -88,7 +103,7 @@ class ListContent extends Component<Props, State> {
       );
     }
 
-    if (this.state.loading) {
+    if (this.state.loadingInitial) {
       return (
         <Wrapper>
           <Container>
@@ -128,6 +143,9 @@ class ListContent extends Component<Props, State> {
                 callAddFavorite={this.onPressFavorite}
               />
             )}
+            onEndReachedThreshold={0.1}
+            onEndReached={this.loadApiList}
+            ListFooterComponent={this.renderLoaderFooterList}
           />
           <Footer>
             {menuFooter.data.map((item, i) => (
@@ -160,7 +178,7 @@ class ListContent extends Component<Props, State> {
         this.ModalList.current.setModalVisible(true);
         break;
       case 'STAR_MODAL':
-        this.ModalList.current.setModalVisible(true);
+        Alert.alert('coming soon!!');
         break;
       case 'SEARCH_INPUT':
         this.setState({ showSearch: true });
@@ -174,14 +192,15 @@ class ListContent extends Component<Props, State> {
   }
 
   onPressSearch = params => {
-    this.setState({ paramSearch: params });
+    this.setState({ paramSearch: params, paramOrder: '', itens:[] });
     this.apiSubmit(
-      `${this.props.category.urlRefer}?${params}&${securityKey.urlKey()}`
+      `${this.props.category.urlRefer}?${params}&limit=99&${securityKey.urlKey()}`
     );
   };
 
   onPressFilter = params => {
-    this.setState({ paramOrder: params });
+    this.ModalList.current.setModalVisible(false);
+    this.setState({ paramOrder: params, itens:[] });
     this.apiSubmit(
       `${
         this.props.category.urlRefer
@@ -195,14 +214,12 @@ class ListContent extends Component<Props, State> {
       idItemCategory: params.id,
       favoriteItem: false,
     };
-
-    this.props.getItemcategory(paramsActions);
-
+    this.props.categoryActions.getItemcategory(paramsActions);
     this.props.navigation.navigate('Details');
   };
 
   onPressFavorite = params => {
-    const { addFavorite, removeFavorite } = this.props;
+    const { addFavorite, removeFavorite } = this.props.categoryActions;
 
     if (params.favoriteItem) {
       addFavorite(params);
@@ -230,44 +247,53 @@ class ListContent extends Component<Props, State> {
     return isFavorite;
   };
 
+  renderLoaderFooterList = () => {
+    if (!this.state.loading) return null;
+    return (
+      <ContainerLoaderScroll>
+        <ActivityIndicator color="#cc0000" />
+      </ContainerLoaderScroll>
+    );
+  };
+
   async apiSubmit(urlRefer) {
     try {
-      this.setState({ loading: true, showSearch: false });
+      this.setState({ showSearch: false, loading: true });
       const response = await Api.get(urlRefer);
       const res = response.data.data.results;
 
-      let itens = [];
+      let resultApi = [];
       switch (this.props.category.urlRefer) {
         case 'comics':
         case 'events':
         case 'series':
-          itens = res.map(item => ({
+          resultApi = res.map(item => ({
             id: item.id,
             title: doTruncarStr(item.title, 25),
             subTitle:
               item.description !== null
                 ? doTruncarStr(item.description, 50)
                 : 'Not released',
-            imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+            imgSrc: `${item.thumbnail.path}/portrait_medium.${item.thumbnail.extension}`,
             favorite: this.verifyFavorite(item.id),
           }));
 
           break;
 
         case 'characters':
-          itens = res.map(item => ({
+          resultApi = res.map(item => ({
             id: item.id,
             title: item.name,
             subTitle: doTruncarStr(item.description, 50),
-            imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+            imgSrc: `${item.thumbnail.path}/portrait_medium.${item.thumbnail.extension}`,
             favorite: this.verifyFavorite(item.id),
           }));
           break;
         case 'creators':
-          itens = res.map(item => ({
+          resultApi = res.map(item => ({
             id: item.id,
             title: item.fullName || 'Not Released',
-            imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+            imgSrc: `${item.thumbnail.path}/portrait_medium.${item.thumbnail.extension}`,
             favorite: this.verifyFavorite(item.id),
           }));
           break;
@@ -277,10 +303,15 @@ class ListContent extends Component<Props, State> {
           );
       }
 
-      this.setState({ itens, loading: false });
+      this.setState({
+        itens:[...this.state.itens, ...resultApi],
+        page: this.state.page + 11,
+        loading: false,
+        loadingInitial: false,
+      });
     } catch (error) {
       this.setState({
-        loading: false,
+        loadingInitial: false,
         error: true,
         codeError: error.response !== undefined ? error.response.status : 0,
       });

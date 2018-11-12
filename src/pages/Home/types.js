@@ -9,7 +9,10 @@ export type Content = {
   urlRefer: string,
   nameCategory: string,
   paramSearch: string,
-  orderBy: string,
+  orderBy: Array<{
+    name: string,
+    value: string,
+  }>,
 };
 
 export type Favorites = {
